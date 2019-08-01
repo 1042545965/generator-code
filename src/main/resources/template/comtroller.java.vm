@@ -68,7 +68,7 @@ public ${table.serviceName} ${table.entityPath}Service;
     public Result<String> ${table.entityPath}Delete(Long id){
         try {
             ${table.entityPath}Service.delete${entity}ById(id);
-            return success();
+            return Result.ok();
         }catch (Exception e){
             logger.error("${table.entityPath}Delete ==> {}",e.toString());
             return Result.fail();
@@ -87,7 +87,7 @@ public ${table.serviceName} ${table.entityPath}Service;
     public Result<String> ${table.entityPath}Update(${entity} ${table.entityPath}){
         try {
                 ${table.entityPath}Service.update${entity}(${table.entityPath});
-                return success();
+                return Result.ok();
             }catch (Exception e){
                 logger.error("${table.entityPath}Update ==> {}",e.toString());
                 return Result.fail();
@@ -107,7 +107,7 @@ public ${table.serviceName} ${table.entityPath}Service;
     public Result<String> ${table.entityPath}Insert(${entity} ${table.entityPath}){
             try {
                     ${table.entityPath}Service.insert${entity}(${table.entityPath});
-                    return success();
+                    return Result.ok();
                  }catch (Exception e){
                     logger.error("${table.entityPath}Insert ==> {}",e.toString());
                     return Result.fail();
