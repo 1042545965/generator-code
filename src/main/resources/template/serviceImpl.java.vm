@@ -1,0 +1,99 @@
+package ${package.ServiceImpl};
+
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+public class ${table.serviceImplName} implements ${table.serviceName} {
+
+
+    @Autowired
+    private ${table.mapperName} ${table.entityPath}Dao;
+
+    /**
+     * 查询 $!{table.comment}
+     *
+     * @param  entityWrapper 信息
+     * @return 结果
+     */
+    @Override
+    public List<${entity}> selectList(EntityWrapper<${entity}> entityWrapper) {
+        return ${table.entityPath}Dao.selectList(entityWrapper);
+    }
+
+    /**
+     * 查询$!{table.comment}
+     *
+     * @param  id 信息
+     * @return 结果
+     */
+    @Override
+    public ${entity} select${entity}ById(Long id) {
+            return ${table.entityPath}Dao.selectById(id);
+    }
+
+    /**
+     * 查询$!{table.comment}
+     *
+     * @param ${table.entityPath} 信息
+     * @return 结果
+     */
+    @Override
+    public ${entity} select${entity}ByOne(${entity} ${table.entityPath}) {
+            return ${table.entityPath}Dao.selectOne(${table.entityPath});
+    }
+
+    /**
+     * 修改$!{table.comment}
+     *
+     * @param ${table.entityPath} 信息
+     * @return 结果
+     */
+    @Override
+    public int update${entity}(${entity} ${table.entityPath}) {
+            return ${table.entityPath}Dao.updateById(${table.entityPath});
+    }
+
+    /**
+     * 新增$!{table.comment}
+     *
+     * @param ${table.entityPath} 信息
+     * @return 结果
+     */
+    @Override
+    public int insert${entity}(${entity} ${table.entityPath}) {
+            return ${table.entityPath}Dao.insert(${table.entityPath});
+    }
+
+#foreach($field in ${table.fields})
+    #if(${field.keyFlag})
+    /**
+     * 删除
+     *
+     * @param
+     * @return
+     */
+    @Override
+    public int delete${entity}ById(${field.propertyType} ${field.propertyName}){
+            return ${table.entityPath}Dao.deleteById(${field.propertyName});
+    }
+    #end
+#end
+
+    /************************以上是基础方法无特殊必要不进行修改******************************************/
+
+}

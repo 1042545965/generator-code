@@ -1,0 +1,70 @@
+package ${package.Service};
+
+import ${package.Entity}.${entity};
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+
+import java.util.List;
+
+    /**
+     * <p>
+     * $!{table.comment} 服务类
+     * </p>
+     *
+     * @author ${author}
+     * @since ${date}
+     */
+    public interface ${table.serviceName} {
+
+    /**
+     * 查询${tableComment}
+     *
+     * @param  entityWrapper 信息
+     * @return
+     */
+    public List<${entity}> selectList(EntityWrapper<${entity}> entityWrapper);
+
+    /**
+     * 查询${tableComment}
+     *
+     * @param  id 信息
+     * @return
+     */
+    public ${entity} select${entity}ById(Long id);
+
+    /**
+     * 查询${tableComment}
+     *
+     * @param ${table.entityPath} 信息
+     * @return
+     */
+    public ${entity} select${entity}ByOne(${entity} ${table.entityPath});
+
+    /**
+     * 修改${tableComment}
+     *
+     * @param  ${table.entityPath} 信息
+     * @return
+     */
+    public int update${entity}(${entity} ${table.entityPath});
+
+    /**
+     * 新增 ${tableComment}
+     *
+     * @param  ${table.entityPath} 信息
+     * @return
+     */
+    public int insert${entity}(${entity} ${table.entityPath});
+
+    #foreach($field in ${table.fields})
+        #if(${field.keyFlag})
+        /**
+         * 删除 ${tableComment}
+         *
+         * @param
+         * @return
+         */
+        public int delete${entity}ById(${field.propertyType} ${field.propertyName});
+        #end
+    #end
+
+}
