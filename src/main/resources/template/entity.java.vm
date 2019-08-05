@@ -52,10 +52,10 @@ private static final long serialVersionUID = 1L;
     #if(${field.keyFlag})
         #set($keyPropertyName=${field.propertyName})
     #end
-    #if("$!field.customMap.NULL" != "YES")
+    #if("$!field.customMap.NULL" != "YES" && !${field.keyFlag})
         #set($fund= ${field.type.indexOf("(")} + 1)
     @NotBlank(message = "${field.comment}不能为空")
-    @Max(value = ${field.type.substring(${fund},${field.type.indexOf(")")})})
+##    @Max(value = ${field.type.substring(${fund},${field.type.indexOf(")")})})
     #end
     #if("$!field.comment" != "")
     @ApiModelProperty(value="${field.comment}")
