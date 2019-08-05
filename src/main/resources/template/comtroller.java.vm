@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.annotation.Validated;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +29,8 @@ import ${package.Entity}.${entity};
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.List;
-
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 /**
  *
@@ -66,13 +68,8 @@ public ${table.serviceName} ${table.entityPath}Service;
     @ResponseBody
     @PostMapping(value="/${table.entityPath}Delete")
     public Result<String> ${table.entityPath}Delete(Long id){
-        try {
             ${table.entityPath}Service.delete${entity}ById(id);
             return Result.ok();
-        }catch (Exception e){
-            logger.error("${table.entityPath}Delete ==> {}",e.toString());
-            return Result.fail();
-        }
     }
 
 
@@ -84,14 +81,9 @@ public ${table.serviceName} ${table.entityPath}Service;
     @Log("修改")
     @ResponseBody
     @PostMapping(value="/${table.entityPath}Update")
-    public Result<String> ${table.entityPath}Update(${entity} ${table.entityPath}){
-        try {
+    public Result<String> ${table.entityPath}Update(@Valid ${entity} ${table.entityPath}){
                 ${table.entityPath}Service.update${entity}(${table.entityPath});
                 return Result.ok();
-            }catch (Exception e){
-                logger.error("${table.entityPath}Update ==> {}",e.toString());
-                return Result.fail();
-            }
     }
 
 
@@ -104,14 +96,9 @@ public ${table.serviceName} ${table.entityPath}Service;
     @Log("新增")
     @ResponseBody
     @PostMapping(value="/${table.entityPath}Insert")
-    public Result<String> ${table.entityPath}Insert(${entity} ${table.entityPath}){
-            try {
+    public Result<String> ${table.entityPath}Insert(@Valid ${entity} ${table.entityPath}){
                     ${table.entityPath}Service.insert${entity}(${table.entityPath});
                     return Result.ok();
-                 }catch (Exception e){
-                    logger.error("${table.entityPath}Insert ==> {}",e.toString());
-                    return Result.fail();
-            }
     }
 
 }
