@@ -57,6 +57,7 @@ public class MabatisPlusGenerator {
                 .setServiceName("%sService")
                 .setServiceImplName("%sServiceImpl")
                 .setControllerName("%sController")
+                .setEntityName("%sEntity")
         );
 
         /**

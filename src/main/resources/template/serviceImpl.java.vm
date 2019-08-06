@@ -18,7 +18,7 @@ import java.util.List;
  * @since ${date}
  */
 @Service
-public class ${table.serviceImplName} implements ${table.serviceName} {
+public class ${table.serviceImplName} extends CoreServiceImpl<${table.mapperName}, ${entity}>implements ${table.serviceName} {
 
 
     @Autowired
