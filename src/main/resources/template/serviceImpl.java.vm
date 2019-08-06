@@ -24,61 +24,6 @@ public class ${table.serviceImplName} extends CoreServiceImpl<${table.mapperName
     @Autowired
     private ${table.mapperName} ${table.entityPath}Dao;
 
-    /**
-     * 查询 $!{table.comment}
-     *
-     * @param  entityWrapper 信息
-     * @return 结果
-     */
-    @Override
-    public List<${entity}> selectList(EntityWrapper<${entity}> entityWrapper) {
-        return ${table.entityPath}Dao.selectList(entityWrapper);
-    }
-
-    /**
-     * 查询$!{table.comment}
-     *
-     * @param  id 信息
-     * @return 结果
-     */
-    @Override
-    public ${entity} select${entity}ById(Long id) {
-            return ${table.entityPath}Dao.selectById(id);
-    }
-
-    /**
-     * 查询$!{table.comment}
-     *
-     * @param ${table.entityPath} 信息
-     * @return 结果
-     */
-    @Override
-    public ${entity} select${entity}ByOne(${entity} ${table.entityPath}) {
-            return ${table.entityPath}Dao.selectOne(${table.entityPath});
-    }
-
-    /**
-     * 修改$!{table.comment}
-     *
-     * @param ${table.entityPath} 信息
-     * @return 结果
-     */
-    @Override
-    public int update(${entity} ${table.entityPath}) {
-            return ${table.entityPath}Dao.updateById(${table.entityPath});
-    }
-
-    /**
-     * 新增$!{table.comment}
-     *
-     * @param ${table.entityPath} 信息
-     * @return 结果
-     */
-    @Override
-    public int insert(${entity} ${table.entityPath}) {
-            return ${table.entityPath}Dao.insert(${table.entityPath});
-    }
-
 #foreach($field in ${table.fields})
     #if(${field.keyFlag})
     /**
@@ -92,10 +37,7 @@ public class ${table.serviceImplName} extends CoreServiceImpl<${table.mapperName
             ${entity} ${table.entityPath} = new ${entity}();
             ${table.entityPath}.setIsDeleted(1);
             ${table.entityPath}.setId(${field.propertyName});
-            ${table.entityPath}.setModifiedUserId(ServiceThreadLocal.getUserID());
-            ${table.entityPath}.setModifiedUserName(ServiceThreadLocal.getUserName());
-            ${table.entityPath}.setModifiedTime(new Date());
-            return ${table.entityPath}Dao.delete${entity}ById(${table.entityPath});
+            return this.updateById(${table.entityPath});
     }
     #end
 #end
