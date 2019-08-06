@@ -89,7 +89,13 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      */
     @Override
     public int delete${entity}ById(${field.propertyType} ${field.propertyName}){
-            return ${table.entityPath}Dao.deleteById(${field.propertyName});
+            ${entity} ${table.entityPath} = new ${entity}();
+            ${table.entityPath}.setIsDeleted(1);
+            ${table.entityPath}.setId(${field.propertyName});
+            ${table.entityPath}.setModifiedUserId(ServiceThreadLocal.getUserID());
+            ${table.entityPath}.setModifiedUserName(ServiceThreadLocal.getUserName());
+            ${table.entityPath}.setModifiedTime(new Date());
+            return ${table.entityPath}Dao.delete${entity}ById(${table.entityPath});
     }
     #end
 #end
