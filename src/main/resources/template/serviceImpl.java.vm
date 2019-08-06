@@ -64,7 +64,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      * @return 结果
      */
     @Override
-    public int update${entity}(${entity} ${table.entityPath}) {
+    public int update(${entity} ${table.entityPath}) {
             return ${table.entityPath}Dao.updateById(${table.entityPath});
     }
 
@@ -75,7 +75,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      * @return 结果
      */
     @Override
-    public int insert${entity}(${entity} ${table.entityPath}) {
+    public int insert(${entity} ${table.entityPath}) {
             return ${table.entityPath}Dao.insert(${table.entityPath});
     }
 
