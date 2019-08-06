@@ -45,7 +45,7 @@ import java.util.List;
      * @param  ${table.entityPath} 信息
      * @return
      */
-    public int update${entity}(${entity} ${table.entityPath});
+    public int update(${entity} ${table.entityPath});
 
     /**
      * 新增 ${tableComment}
@@ -53,7 +53,7 @@ import java.util.List;
      * @param  ${table.entityPath} 信息
      * @return
      */
-    public int insert${entity}(${entity} ${table.entityPath});
+    public int insert(${entity} ${table.entityPath});
 
     #foreach($field in ${table.fields})
         #if(${field.keyFlag})

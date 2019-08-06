@@ -82,7 +82,7 @@ public ${table.serviceName} ${table.entityPath}Service;
     @ResponseBody
     @PostMapping(value="/${table.entityPath}Update")
     public Result<String> ${table.entityPath}Update(@Valid ${entity} ${table.entityPath}){
-                ${table.entityPath}Service.update${entity}(${table.entityPath});
+                ${table.entityPath}Service.update(${table.entityPath});
                 return Result.ok();
     }
 
@@ -97,7 +97,7 @@ public ${table.serviceName} ${table.entityPath}Service;
     @ResponseBody
     @PostMapping(value="/${table.entityPath}Insert")
     public Result<String> ${table.entityPath}Insert(@Valid ${entity} ${table.entityPath}){
-                    ${table.entityPath}Service.insert${entity}(${table.entityPath});
+                    ${table.entityPath}Service.insert(${table.entityPath});
                     return Result.ok();
     }
 
