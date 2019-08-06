@@ -35,14 +35,5 @@
                 ${table.fieldNames}
     </sql>
     #end
-    <update id="delete${entity}ById" parameterType="${package.Entity}.${entity}">
-        update ${table.name}
-        <set>
-            is_deleted = #{isDeleted},
-            modified_time = #{modifiedTime},
-            modified_user_id = #{modifiedUserId},
-            modified_user_name = #{modifiedUserName},
-        </set>
-        where id = #{id}
-    </update>
+
 </mapper>

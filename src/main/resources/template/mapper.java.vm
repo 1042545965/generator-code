@@ -13,6 +13,5 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  */
 public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
 
-    public int delete${entity}ById(${entity} ${table.entityPath});
 
 }
